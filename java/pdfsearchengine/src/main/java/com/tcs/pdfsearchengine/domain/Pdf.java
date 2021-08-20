@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.tcs.pdfsearchengine.model.Education;
 
-@Document(indexName = "resume", type = "pdf")
+@Document(indexName = "test", type = "pdf")
 public class Pdf implements Serializable{
 	
 	private static final long serialVersionUID = -1L;

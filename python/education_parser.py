@@ -1,19 +1,16 @@
 import re
+
 import spacy
 from nltk.corpus import stopwords
 
 # load pre-trained model
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load('fr_core_news_sm')
 
 # Grad all general stop words
-STOPWORDS = set(stopwords.words('english'))
+STOPWORDS = set(stopwords.words('french'))
 
 
-EDUCATION = ['BED', 'MS', 'BCOM', 'SSLC', 'MTECH', 'TGT', 'HSC', 'PUC', 'AICTE',
-             'ISC', 'MSC', 'BE', 'MCA', 'BSC', 'XII', 'BHMS', 'BTECH', 'CBSE', 'ICSE', 'BBA',
-             'CV', 'SSC', 'LLB', 'ME', 'BCA', 'BA', 'MD', 'PHD', 'LLM', 'DP', 'PCS', 'CS', 'IAS',
-             'NIIT', 'X', 'GPA', 'BS', 'PGDM', 'NDA', 'MBA', 'AMIE', 'PGDCA', 'BACHELOR', 'MASTER',
-             'BACHELORS', 'MASTERS']
+EDUCATION = ['INGÉNIEUR','MASTER', 'LICENSE', 'TECHNICIEN','INGENIEUR','BTS']
 
 
 def extract_education(resume_text):
@@ -37,18 +34,15 @@ def extract_education(resume_text):
     education = []
     for key in edu.keys():
         d = {}
-        year = re.search(re.compile(r'(((20|19)(\d{2})))'), edu[key])
+        year = re.search(re.compile(r'(((|21)(\d{2})))'), edu[key])
         if year:
             d["degree"] = key
             d["fulleducation"] = edu[key]
             d["year"] = ''.join(year[0])
-            # education.append((key, ''.join(year[0])))
-            # education.append(({"degree": key},{"fulleducation":edu[key]}, {"year":''.join(year[0])}))
+
         else:
             d["degree"] = key
             d["fulleducation"] = edu[key]
             d["year"] = ""
-            # education.append(key)
-            # education.append(({"degree": key},{"fulleducation":edu[key]}))
         education.append(d)
     return education

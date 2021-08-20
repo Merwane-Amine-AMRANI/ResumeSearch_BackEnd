@@ -13,7 +13,7 @@ def extract_name(resume_text):
 
     # First name and Last name are always Proper Nouns
 
-    pattern = [{'POS': 'PROPN'}, {'POS': 'PROPN'}]
+    pattern = [{'POS': 'PROPN'}, {'POS': 'PROPN'}, {'POS': 'PROPN'}]
     matcher.add('NAME', [pattern])
 
     matches = matcher(nlp_text)
