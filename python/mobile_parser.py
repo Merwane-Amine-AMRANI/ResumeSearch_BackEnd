@@ -6,7 +6,7 @@ def extract_mobile_number(text):
     if phone:
         number = ''.join(phone[0])
         if len(number) > 10:
-            return  number
+            return number
         else:
             return number
 

@@ -9,9 +9,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import com.tcs.pdfsearchengine.model.Education;
 
-@Document(indexName = "test", type = "pdf")
+@Document(indexName = "tes", type = "pdf")
 public class Pdf implements Serializable{
-	
+
 	private static final long serialVersionUID = -1L;
 
 	private Long id;
@@ -19,12 +19,12 @@ public class Pdf implements Serializable{
 	private String phoneNumber;
 	private String userMail;
 	private List<String> skills;
-	private String completeEducation;	
+	private String completeEducation;
 	private List<String> completeDegree;
-	
+
 	@Field(type = FieldType.Nested)
 	private List<Education> education;
-	
+
 	public Pdf() {
 		super();
 	}
@@ -32,7 +32,7 @@ public class Pdf implements Serializable{
 
 
 	public Pdf(Long id, String userName, String phoneNumber, String userMail, List<String> skills,
-			String completeEducation, List<Education> education, List<String> completeDegree) {
+			   String completeEducation, List<Education> education, List<String> completeDegree) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -93,7 +93,7 @@ public class Pdf implements Serializable{
 	public void setEducation(List<Education> education) {
 		this.education = education;
 	}
-	
+
 	public String getCompleteEducation() {
 		return completeEducation;
 	}
@@ -101,7 +101,7 @@ public class Pdf implements Serializable{
 	public void setCompleteEducation(String completeEducation) {
 		this.completeEducation = completeEducation;
 	}
-	
+
 	public List<String> getCompleteDegree() {
 		return completeDegree;
 	}

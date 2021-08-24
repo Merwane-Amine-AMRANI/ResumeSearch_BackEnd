@@ -10,7 +10,7 @@ nlp = spacy.load('fr_core_news_sm')
 STOPWORDS = set(stopwords.words('french'))
 
 
-EDUCATION = ['INGÉNIEUR','MASTER', 'LICENSE', 'TECHNICIEN','INGENIEUR','BTS']
+EDUCATION = ['INGÉNIEUR','MASTER', 'LICENSE', 'TECHNICIEN','BTS']
 
 
 def extract_education(resume_text):
@@ -34,7 +34,7 @@ def extract_education(resume_text):
     education = []
     for key in edu.keys():
         d = {}
-        year = re.search(re.compile(r'(((|21)(\d{2})))'), edu[key])
+        year = re.search(re.compile(r'(((|20)(\d{4})))'), edu[key])
         if year:
             d["degree"] = key
             d["fulleducation"] = edu[key]
